@@ -32,10 +32,9 @@ public class BookController {
     }
 
     @GetMapping("/books/remove/{id}")
-    String exit(@PathVariable Long id, Model model) {
-        if  (id == null)
-            return "redirect:/books";
-        books.remove((int)(long)id);
+    String booksRem(@PathVariable Long id, Model model) {
+        if  (id != null)
+            books.remove((int)(long)id);
         return "redirect:/books";
     }
 }
