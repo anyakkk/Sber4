@@ -21,7 +21,7 @@
             <td th:text="${book.nameAuthor}"></td>
             <td th:text="${book.nameBook}"></td>
             <td th:text="${book.year}"></td>
-
+            <td><a th:href="@{/books/remove/{bookId}(bookId=${book.id})}">Удалить</a></td>
         </tr>
     </table>
     </td>
@@ -29,10 +29,6 @@
         <p>
         <form action="#" th:action="@{/books/new}" th:object="${books}" method="get">
             <input type="submit" value="Добавить книгу"/>
-        </form>
-
-        <form action="#" th:action="@{/books/remove}" method="get">
-            <input type="submit" value="Удалить книгу"/>
         </form>
 
         </p>

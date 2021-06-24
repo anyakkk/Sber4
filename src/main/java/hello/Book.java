@@ -4,11 +4,21 @@ class Book{
     private String nameAuthor;
     private String nameBook;
     private String year;
+    private Integer id;
 
     public Book(String nameAuthor, String nameBook, String year) {
         this.nameAuthor = nameAuthor;
         this.nameBook = nameBook;
         this.year = year;
+
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNameAuthor() {

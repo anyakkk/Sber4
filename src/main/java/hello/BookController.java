@@ -27,14 +27,16 @@ public class BookController {
 
     @PostMapping("/books/new")
     public String booksSubmit(@ModelAttribute Book book, Model model) {
+        book.setId(books.size());
         books.add(book);
         return "redirect:/books";
     }
 
-
-    @GetMapping("/books/remove")
-    public String booksRem( Model model) {
-        books.remove(books.size() - 1);
+    @GetMapping("/books/remove/{id}")
+    String exit(@PathVariable Long id, Model model) {
+        if  (id == null)
+            return "redirect:/books";
+        books.remove((int)(long)id);
         return "redirect:/books";
     }
 }
