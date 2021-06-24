@@ -4,7 +4,8 @@ class Book{
     private String nameAuthor;
     private String nameBook;
     private String year;
-    private Integer id;
+    private static int maxId = 0;
+    private int id = maxId++;
 
     public Book(String nameAuthor, String nameBook, String year) {
         this.nameAuthor = nameAuthor;
@@ -17,9 +18,7 @@ class Book{
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+
 
     public String getNameAuthor() {
         return nameAuthor;

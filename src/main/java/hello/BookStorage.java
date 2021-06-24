@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class BookStorage {
@@ -11,12 +12,20 @@ public class BookStorage {
 
 
     void add(Book book) {
+
         books.add(book);
     }
 
     void remove(int id) {
-        books.remove(id);
+        books.removeIf(new Predicate<Book>() {
+
+            public boolean test(Book book) {
+                return book.getId() == id;
+            }
+        });
     }
+
+
 
     public List<Book> getAll() {
         return books;

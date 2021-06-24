@@ -27,7 +27,6 @@ public class BookController {
 
     @PostMapping("/books/new")
     public String booksSubmit(@ModelAttribute Book book, Model model) {
-        book.setId(books.size());
         books.add(book);
         return "redirect:/books";
     }
