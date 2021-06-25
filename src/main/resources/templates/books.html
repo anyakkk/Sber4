@@ -3,37 +3,47 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Title</title>
+    <title>Список книг</title>
 </head>
 <body>
-<h1>Books</h1>
+<div class = "container p-3 border">
+    <h1>Список книг</h1>
 
-    <table>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Автор</th>
+                <th scope="col">Название книги</th>
+                <th scope="col">Год издания</th>
+                <th scope="col">Удаление</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+
+                <td th:text="${book.nameAuthor}"></td>
+                <td th:text="${book.nameBook}"></td>
+                <td th:text="${book.year}"></td>
+                <td>
+                    <a th:href="@{/books/remove/{bookId}(bookId=${book.id})}">
+                        <button type="submit" class="btn btn-outline-dark">Удалить книгу</button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        </td>
         <td>
-        <tr>
-            <th>Автор</th>
-            <th>Название книги</th>
-            <th>Год издания</th>
-        </tr>
+            <p>
+            <form action="#" th:action="@{/books/new}" th:object="${books}" method="get">
+                <button type="submit" class="btn btn-outline-dark">Добавить книгу</button>
+            </form>
 
-        <tr th:each="book : ${books}">
-            <td th:text="${book.nameAuthor}"></td>
-            <td th:text="${book.nameBook}"></td>
-            <td th:text="${book.year}"></td>
-            <td><a th:href="@{/books/remove/{bookId}(bookId=${book.id})}">Удалить</a></td>
-        </tr>
-    </table>
-    </td>
-    <td>
-        <p>
-        <form action="#" th:action="@{/books/new}" th:object="${books}" method="get">
-            <input type="submit" value="Добавить книгу"/>
-        </form>
-
-        </p>
-    </td>
-
-
+            </p>
+        </td>
+</div>
 </body>
 </html>
